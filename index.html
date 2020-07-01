@@ -1,20 +1,67 @@
-<html>
-  <body>
-      <form>
-        <label for="val1">Coloque o 1. valor</label>  
-        <input type="number" id="val1"/>
-        <label for="val2">Coloque o 2. valor</label>  
-        <input type="number" id="val2"/>
+  <!DOCTYPE html>
+<html> 
+   <head>
+     <style>
+        form {
+        margin: 10px auto 10px auto ;
+        width: 400px;
+        border: solid black 1px;
+        padding: 20px;
+   
+       }
+        label ,input{
+        font-size: 19px;
+        display: block;
+       }
+     </style>
+            
 
-        <select>
-            <option value="somar">Somar</option>
-            <option value="subtrair">Subtrair</option>
+     <script type="text/javascript">
+        function calcular(sel) {
+   var valor1 = document.formucalc.valor1.value;
+   var valor2 = document.formucalc.valor2.value;
+  
 
-        </select>
-        <button id="exec" onclick="executar()"></button>
-        <input type="number" id="resultado"/>
+   if (sel == "somar") {
+       var res = parseInt(valor1) + parseInt(valor2);
+   } else {
+      if (sel == "subtrair") {
+         var  res = valor1-valor2;
+      } else {
+         if (sel == "multiplicar") {
+            var res = valor1*valor2;
+         } else {
+            var res = valor1/valor2;
+         }
+      }
+   }
 
-       
-      </form>
-  </body> 
+   document.formucalc.res.value = res;
+}
+     </script>
+   </head>
+ <body>
+   <form name="formucalc"> 
+     <h1> Calculadora Master 1.1</h>
+     <label for="valor1">Digite o primeiro valor</label>
+     <input type="number" id="valor1"/>
+
+     <label for="valor2">Digite o segundo valor</label>
+     <input type="number" id="valor2"/>
+     
+
+     <label for="sel"> Selecione a operação</label>
+     <select id="sel" name="sel">
+       <option value="somar"> somar </option>
+       <option value="subtrair"> subtrair </option>
+	   <option value="multiplicar">Multiplicar</option>
+	   <option value="divisao"> Divisão </option>
+
+    <label for="res">Resultado:</label>
+      <input type="text" name="res" id="res" />
+
+      <input type="button" value="Calcular" class="botao" onClick="calcular(document.formucalc.sel.value)"/>
+
+   </form>
+ </body>
 </html>
